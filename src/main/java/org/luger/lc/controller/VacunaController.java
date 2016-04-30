@@ -29,13 +29,13 @@ public class VacunaController {
     }
 
     @RequestMapping(value = "/vacuna/{id}",method = RequestMethod.GET)
-    public ResponseEntity<Vacuna> findById(@PathVariable Long id) throws Exception{
+    public ResponseEntity<Vacuna> findById(@PathVariable Integer id) throws Exception{
         return ResponseEntity.ok(vacunaService.findById(id));
     }
 
-    @RequestMapping(value = "/vacuna",method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@RequestBody Vacuna vacuna) throws Exception{
-        vacunaService.delete(vacuna);
+    @RequestMapping(value = "/vacuna/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws Exception{
+        vacunaService.delete(id);
         return ResponseEntity.ok("Vacuna eliminada");
     }
 

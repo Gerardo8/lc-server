@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface GrupoTeoriaDAO {
 
-    GrupoTeoria findById(Long id);
+    GrupoTeoria findById(Integer id);
 
-    List<GrupoTeoria> findByAcademiaId(Long academiaId);
+    List<GrupoTeoria> findByAcademiaId(Integer academiaId);
 
     void persist(GrupoTeoria grupoTeoria);
 

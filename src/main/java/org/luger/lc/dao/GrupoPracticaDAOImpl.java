@@ -16,12 +16,12 @@ public class GrupoPracticaDAOImpl  implements GrupoPracticaDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public GrupoPractica findById(Long id) {
+    public GrupoPractica findById(Integer id) {
         return (GrupoPractica) sessionFactory.getCurrentSession().get(GrupoPractica.class, id);
     }
 
     @Override
-    public List<GrupoPractica> findByAcademiaCampoId(Long academiaId, Long campoClinicoId) {
+    public List<GrupoPractica> findByAcademiaCampoId(Integer academiaId, Integer campoClinicoId) {
         return sessionFactory.getCurrentSession().createCriteria(GrupoPractica.class)
                 .add(Restrictions.eq("academia.id", academiaId))
                 .add(Restrictions.eq("campoClinico.id", campoClinicoId)).list();

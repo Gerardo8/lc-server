@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface GrupoPracticaDAO {
 
-    GrupoPractica findById(Long id);
+    GrupoPractica findById(Integer id);
 
-    List<GrupoPractica> findByAcademiaCampoId(Long academiaId,Long campoClinicoId);
+    List<GrupoPractica> findByAcademiaCampoId(Integer academiaId,Integer campoClinicoId);
 
     void persist(GrupoPractica grupoPractica);
 

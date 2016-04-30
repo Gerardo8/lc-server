@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface DocumentoAlumnoDAO {
 
-    DocumentoAlumno findById(Long id);
+    DocumentoAlumno findById(Integer id);
 
-    DocumentoAlumno findByAlumnoId(Long id);
+    DocumentoAlumno findByAlumnoId(Integer id);
 
     void persist(DocumentoAlumno documentoAlumno);
 

@@ -29,13 +29,13 @@ public class AcademiaController {
     }
 
     @RequestMapping(value = "/academia/{id}",method = RequestMethod.GET)
-    public ResponseEntity<Academia> findById(@PathVariable Long id) throws Exception{
+    public ResponseEntity<Academia> findById(@PathVariable Integer id) throws Exception{
         return ResponseEntity.ok(academiaService.findById(id));
     }
 
-    @RequestMapping(value = "/academia",method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@RequestBody Academia academia) throws Exception{
-        academiaService.delete(academia);
+    @RequestMapping(value = "/academia/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws Exception{
+        academiaService.delete(id);
         return ResponseEntity.ok("Academia eliminada");
     }
 

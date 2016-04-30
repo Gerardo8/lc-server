@@ -20,7 +20,7 @@ public class CampoClinicoServiceImpl implements CampoClinicoService {
     private DireccionCampoClinicoDAO direccionCampoClinicoDAO;
 
     @Override
-    public CampoClinico findById(Long id) {
+    public CampoClinico findById(Integer id) {
         return campoClinicoDAO.findById(id);
     }
 
@@ -36,7 +36,8 @@ public class CampoClinicoServiceImpl implements CampoClinicoService {
     }
 
     @Override
-    public void delete(CampoClinico campoClinico) {
+    public void delete(Integer id) {
+        CampoClinico campoClinico = campoClinicoDAO.findById(id);
         campoClinicoDAO.delete(campoClinico);
     }
 

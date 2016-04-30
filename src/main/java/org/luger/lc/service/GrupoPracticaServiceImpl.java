@@ -1,9 +1,7 @@
 package org.luger.lc.service;
 
 import org.luger.lc.dao.GrupoPracticaDAO;
-import org.luger.lc.dao.HorarioGrupoPracticaDAO;
 import org.luger.lc.model.GrupoPractica;
-import org.luger.lc.model.HorarioGrupoPractica;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,23 +14,20 @@ public class GrupoPracticaServiceImpl implements GrupoPracticaService {
 
     @Autowired
     private GrupoPracticaDAO grupoPracticaDAO;
-    @Autowired
-    private HorarioGrupoPracticaDAO horarioGrupoPracticaDAO;
 
     @Override
-    public GrupoPractica findById(Long id) {
+    public GrupoPractica findById(Integer id) {
         return grupoPracticaDAO.findById(id);
     }
 
     @Override
-    public List<GrupoPractica> findByAcademiaCampoId(Long academiaId, Long campoClinicoId) {
+    public List<GrupoPractica> findByAcademiaCampoId(Integer academiaId, Integer campoClinicoId) {
         return grupoPracticaDAO.findByAcademiaCampoId(academiaId,campoClinicoId);
     }
 
     @Override
-    public void persist(GrupoPractica grupoPractica,HorarioGrupoPractica horarioGrupoPractica) {
+    public void persist(GrupoPractica grupoPractica) {
         grupoPracticaDAO.persist(grupoPractica);
-        horarioGrupoPracticaDAO.persist(horarioGrupoPractica);
     }
 
     @Override
@@ -41,7 +36,8 @@ public class GrupoPracticaServiceImpl implements GrupoPracticaService {
     }
 
     @Override
-    public void delete(GrupoPractica grupoPractica) {
+    public void delete(Integer id) {
+        GrupoPractica grupoPractica = grupoPracticaDAO.findById(id);
         grupoPracticaDAO.delete(grupoPractica);
     }
 

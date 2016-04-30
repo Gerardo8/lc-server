@@ -1,7 +1,6 @@
 package org.luger.lc.controller;
 
 import org.luger.lc.model.GrupoTeoria;
-import org.luger.lc.model.HorarioGrupoTeoria;
 import org.luger.lc.service.GrupoTeoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +17,8 @@ public class GrupoTeoriaController {
     private GrupoTeoriaService grupoTeoriaService;
 
     @RequestMapping(value = "/grupo-teoria",method = RequestMethod.POST)
-    public ResponseEntity<String> persist(@RequestBody HorarioGrupoTeoria horarioGrupoTeoria) throws Exception{
-        grupoTeoriaService.persist(horarioGrupoTeoria.getGrupoTeoria(),horarioGrupoTeoria);
+    public ResponseEntity<String> persist(@RequestBody GrupoTeoria grupoTeoria) throws Exception{
+        grupoTeoriaService.persist(grupoTeoria);
         return ResponseEntity.ok("Grupo guardado");
     }
 
@@ -30,19 +29,19 @@ public class GrupoTeoriaController {
     }
 
     @RequestMapping(value = "/grupo-teoria/{id}",method = RequestMethod.GET)
-    public ResponseEntity<GrupoTeoria> findById(@PathVariable Long id) throws Exception{
+    public ResponseEntity<GrupoTeoria> findById(@PathVariable Integer id) throws Exception{
         return ResponseEntity.ok(grupoTeoriaService.findById(id));
     }
 
 
     @RequestMapping(value = "/grupos-teoria/academia/{academiaId}",method = RequestMethod.GET)
-    public ResponseEntity<List<GrupoTeoria>> findByAcademiaCampoId(@PathVariable Long academiaId) throws Exception{
+    public ResponseEntity<List<GrupoTeoria>> findByAcademiaCampoId(@PathVariable Integer academiaId) throws Exception{
         return ResponseEntity.ok(grupoTeoriaService.findByAcademiaId(academiaId));
     }
 
-    @RequestMapping(value = "/grupo-teoria",method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@RequestBody GrupoTeoria grupoTeoria) throws Exception{
-        grupoTeoriaService.delete(grupoTeoria);
+    @RequestMapping(value = "/grupo-teoria/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws Exception{
+        grupoTeoriaService.delete(id);
         return ResponseEntity.ok("Grupo eliminado");
     }
 

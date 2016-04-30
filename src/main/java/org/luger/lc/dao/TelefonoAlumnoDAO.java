@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TelefonoAlumnoDAO {
 
-    TelefonoAlumno findById(Long id);
+    TelefonoAlumno findById(Integer id);
 
     void persist(TelefonoAlumno telefonoAlumno);
 

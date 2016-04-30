@@ -1,6 +1,7 @@
 package org.luger.lc.dao;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.luger.lc.model.Academia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,7 @@ public class AcademiaDAOImpl implements AcademiaDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public Academia findById(Long id) {
+    public Academia findById(Integer id) {
         return (Academia) sessionFactory.getCurrentSession().get(Academia.class, id);
     }
 
@@ -36,7 +37,7 @@ public class AcademiaDAOImpl implements AcademiaDAO {
 
     @Override
     public List<Academia> findAll() {
-        return sessionFactory.getCurrentSession().createCriteria(Academia.class).list();
+        return sessionFactory.getCurrentSession().createCriteria(Academia.class).addOrder(Order.asc("nombre")).list();
     }
 
     @Override

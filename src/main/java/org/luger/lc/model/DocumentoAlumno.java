@@ -1,33 +1,54 @@
 package org.luger.lc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Arrays;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "documento_alumno",schema = "laboratorios_computo")
+@Table(schema = "laboratorios_computo",name = "documento_alumno")
 public class DocumentoAlumno implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    @Basic(optional = false)
+    @Column(name = "nombre")
     private String nombre;
-    @JsonIgnore
+    @Basic(optional = false)
+    @Column(name = "tipo")
     private String tipo;
-    @JsonIgnore
-    @Type(type = "org.hibernate.type.BinaryType")
+    @Basic(optional = false)
+    @Column(name = "contenido")
     private byte[] contenido;
     @JoinColumn(name = "alumno_id", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Alumno alumno;
 
-    public Long getId() {
+    public DocumentoAlumno() {
+    }
+
+    public DocumentoAlumno(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -64,13 +85,28 @@ public class DocumentoAlumno implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "DocumentoAlumno{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", contenido=" + Arrays.toString(contenido) +
-                ", alumno=" + alumno +
-                '}';
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof DocumentoAlumno)) {
+            return false;
+        }
+        DocumentoAlumno other = (DocumentoAlumno) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "org.luger.lc.model.DocumentoAlumno[ id=" + id + " ]";
+    }
+    
 }

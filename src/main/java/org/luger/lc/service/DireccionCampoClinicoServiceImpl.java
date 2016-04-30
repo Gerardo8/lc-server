@@ -16,7 +16,7 @@ public class DireccionCampoClinicoServiceImpl implements DireccionCampoClinicoSe
     private DireccionCampoClinicoDAO direccionCampoClinicoDAO;
 
     @Override
-    public DireccionCampoClinico findById(Long id) {
+    public DireccionCampoClinico findById(Integer id) {
         return direccionCampoClinicoDAO.findById(id);
     }
 
@@ -31,7 +31,8 @@ public class DireccionCampoClinicoServiceImpl implements DireccionCampoClinicoSe
     }
 
     @Override
-    public void delete(DireccionCampoClinico direccionCampoClinico) {
+    public void delete(Integer id) {
+        DireccionCampoClinico direccionCampoClinico = direccionCampoClinicoDAO.findById(id);
         direccionCampoClinicoDAO.delete(direccionCampoClinico);
     }
 

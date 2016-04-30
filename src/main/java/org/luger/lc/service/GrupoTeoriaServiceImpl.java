@@ -1,9 +1,7 @@
 package org.luger.lc.service;
 
 import org.luger.lc.dao.GrupoTeoriaDAO;
-import org.luger.lc.dao.HorarioGrupoTeoriaDAO;
 import org.luger.lc.model.GrupoTeoria;
-import org.luger.lc.model.HorarioGrupoTeoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,23 +14,20 @@ public class GrupoTeoriaServiceImpl implements GrupoTeoriaService {
 
     @Autowired
     private GrupoTeoriaDAO grupoTeoriaDAO;
-    @Autowired
-    private HorarioGrupoTeoriaDAO horarioGrupoTeoriaDAO;
 
     @Override
-    public GrupoTeoria findById(Long id) {
+    public GrupoTeoria findById(Integer id) {
         return grupoTeoriaDAO.findById(id);
     }
 
     @Override
-    public List<GrupoTeoria> findByAcademiaId(Long academiaId) {
+    public List<GrupoTeoria> findByAcademiaId(Integer academiaId) {
         return grupoTeoriaDAO.findByAcademiaId(academiaId);
     }
 
     @Override
-    public void persist(GrupoTeoria grupoTeoria,HorarioGrupoTeoria horarioGrupoTeoria) {
+    public void persist(GrupoTeoria grupoTeoria) {
         grupoTeoriaDAO.persist(grupoTeoria);
-        horarioGrupoTeoriaDAO.persist(horarioGrupoTeoria);
     }
 
     @Override
@@ -41,7 +36,8 @@ public class GrupoTeoriaServiceImpl implements GrupoTeoriaService {
     }
 
     @Override
-    public void delete(GrupoTeoria grupoTeoria) {
+    public void delete(Integer id) {
+        GrupoTeoria grupoTeoria = grupoTeoriaDAO.findById(id);
         grupoTeoriaDAO.delete(grupoTeoria);
     }
 

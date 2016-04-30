@@ -16,7 +16,7 @@ public class TelefonoAlumnoServiceImpl implements TelefonoAlumnoService {
     private TelefonoAlumnoDAO telefonoAlumnoDAO;
 
     @Override
-    public TelefonoAlumno findById(Long id) {
+    public TelefonoAlumno findById(Integer id) {
         return telefonoAlumnoDAO.findById(id);
     }
 
@@ -31,7 +31,8 @@ public class TelefonoAlumnoServiceImpl implements TelefonoAlumnoService {
     }
 
     @Override
-    public void delete(TelefonoAlumno telefonoAlumno) {
+    public void delete(Integer id) {
+        TelefonoAlumno telefonoAlumno = telefonoAlumnoDAO.findById(id);
         telefonoAlumnoDAO.delete(telefonoAlumno);
     }
 

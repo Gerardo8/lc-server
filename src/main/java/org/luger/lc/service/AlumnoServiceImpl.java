@@ -20,14 +20,10 @@ public class AlumnoServiceImpl implements AlumnoService {
     @Autowired
     private AlumnoDAO alumnoDAO;
     @Autowired
-    private DocumentoAlumnoDAO documentoAlumnoDAO;
-    @Autowired
     private Excel excel;
-    @Autowired
-    private Word word;
 
     @Override
-    public Alumno findById(Long id) {
+    public Alumno findById(Integer id) {
         return alumnoDAO.findById(id);
     }
 
@@ -43,18 +39,12 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public void update(Alumno alumno) {
-        DocumentoAlumno documentoAlumnoCreated = word.createWordDocument(alumno);
-        DocumentoAlumno documentoAlumnoFromDB = documentoAlumnoDAO.findByAlumnoId(alumno.getId());
         alumnoDAO.update(alumno);
-        if(documentoAlumnoFromDB != null) {
-            documentoAlumnoDAO.update(documentoAlumnoCreated);
-        } else {
-            documentoAlumnoDAO.persist(documentoAlumnoCreated);
-        }
     }
 
     @Override
-    public void delete(Alumno alumno) {
+    public void delete(Integer id) {
+        Alumno alumno = alumnoDAO.findById(id);
         alumnoDAO.delete(alumno);
     }
 

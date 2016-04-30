@@ -16,12 +16,12 @@ public class GrupoTeoriaDAOImpl implements GrupoTeoriaDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public GrupoTeoria findById(Long id) {
+    public GrupoTeoria findById(Integer id) {
         return (GrupoTeoria) sessionFactory.getCurrentSession().get(GrupoTeoria.class, id);
     }
 
     @Override
-    public List<GrupoTeoria> findByAcademiaId(Long academiaId) {
+    public List<GrupoTeoria> findByAcademiaId(Integer academiaId) {
         return sessionFactory.getCurrentSession().createCriteria(GrupoTeoria.class)
                 .add(Restrictions.eq("academia.id", academiaId)).list();
     }

@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface DireccionCampoClinicoService {
 
-    DireccionCampoClinico findById(Long id);
+    DireccionCampoClinico findById(Integer id);
 
     void persist(DireccionCampoClinico direccionCampoClinico);
 
     void update(DireccionCampoClinico direccionCampoClinico);
 
-    void delete(DireccionCampoClinico direccionCampoClinico);
+    void delete(Integer id);
 
     List<DireccionCampoClinico> findAll();
 

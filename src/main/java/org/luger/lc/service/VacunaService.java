@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface VacunaService {
 
-    Vacuna findById(Long id);
+    Vacuna findById(Integer id);
 
     void persist(Vacuna vacuna);
 
     void update(Vacuna vacuna);
 
-    void delete(Vacuna vacuna);
+    void delete(Integer id);
 
     List<Vacuna> findAll();
 

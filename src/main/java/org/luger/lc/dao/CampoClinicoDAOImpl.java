@@ -15,7 +15,7 @@ public class CampoClinicoDAOImpl  implements CampoClinicoDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public CampoClinico findById(Long id) {
+    public CampoClinico findById(Integer id) {
         return (CampoClinico) sessionFactory.getCurrentSession().get(CampoClinico.class, id);
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface VacunaDAO {
 
-    Vacuna findById(Long id);
+    Vacuna findById(Integer id);
 
     void persist(Vacuna vacuna);
 

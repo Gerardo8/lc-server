@@ -30,7 +30,7 @@ public class AlumnoController {
     }
 
     @RequestMapping(value = "/alumno/{id}",method = RequestMethod.GET)
-    public Alumno findById(@PathVariable Long id) throws Exception{
+    public Alumno findById(@PathVariable Integer id) throws Exception{
         return alumnoService.findById(id);
     }
 
@@ -39,9 +39,9 @@ public class AlumnoController {
         return ResponseEntity.ok(alumnoService.findByNumeroCuenta(numeroCuenta));
     }
 
-    @RequestMapping(value = "/alumno",method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@RequestBody Alumno alumno) throws Exception{
-        alumnoService.delete(alumno);
+    @RequestMapping(value = "/alumno/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws Exception{
+        alumnoService.delete(id);
         return ResponseEntity.ok("Alumno eliminado");
     }
 

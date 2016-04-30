@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AlumnoDAO {
 
-    Alumno findById(Long id);
+    Alumno findById(Integer id);
 
     Alumno findByNumeroCuenta(String numeroCuenta);
 

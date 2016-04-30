@@ -1,6 +1,7 @@
 package org.luger.lc.dao;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.luger.lc.model.Alumno;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class AlumnoDAOImpl  implements AlumnoDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public Alumno findById(Long id) {
+    public Alumno findById(Integer id) {
         return (Alumno) sessionFactory.getCurrentSession().get(Alumno.class,id);
     }
 
@@ -43,7 +44,7 @@ public class AlumnoDAOImpl  implements AlumnoDAO {
 
     @Override
     public List<Alumno> findAll() {
-        return sessionFactory.getCurrentSession().createCriteria(Alumno.class).list();
+        return sessionFactory.getCurrentSession().createCriteria(Alumno.class).addOrder(Order.asc("nombre")).list();
     }
 
     @Override

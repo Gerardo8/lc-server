@@ -16,7 +16,7 @@ public class AcademiaServiceImpl implements AcademiaService {
     private AcademiaDAO academiaDAO;
 
     @Override
-    public Academia findById(Long id) {
+    public Academia findById(Integer id) {
         return academiaDAO.findById(id);
     }
 
@@ -31,7 +31,8 @@ public class AcademiaServiceImpl implements AcademiaService {
     }
 
     @Override
-    public void delete(Academia academia) {
+    public void delete(Integer id) {
+        Academia academia = academiaDAO.findById(id);
         academiaDAO.delete(academia);
     }
 

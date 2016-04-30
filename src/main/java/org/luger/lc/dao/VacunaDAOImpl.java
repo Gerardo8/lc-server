@@ -15,7 +15,7 @@ public class VacunaDAOImpl implements VacunaDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public Vacuna findById(Long id) {
+    public Vacuna findById(Integer id) {
         return (Vacuna) sessionFactory.getCurrentSession().get(Vacuna.class, id);
     }
 

@@ -1,21 +1,20 @@
 package org.luger.lc.service;
 
 import org.luger.lc.model.GrupoPractica;
-import org.luger.lc.model.HorarioGrupoPractica;
 
 import java.util.List;
 
 public interface GrupoPracticaService {
 
-    GrupoPractica findById(Long id);
+    GrupoPractica findById(Integer id);
 
-    List<GrupoPractica> findByAcademiaCampoId(Long academiaId,Long campoClinicoId);
+    List<GrupoPractica> findByAcademiaCampoId(Integer academiaId,Integer campoClinicoId);
 
-    void persist(GrupoPractica grupoPractica,HorarioGrupoPractica horarioGrupoPractica);
+    void persist(GrupoPractica grupoPractica);
 
     void update(GrupoPractica grupoPractica);
 
-    void delete(GrupoPractica grupoPractica);
+    void delete(Integer id);
 
     List<GrupoPractica> findAll();
 

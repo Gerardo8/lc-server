@@ -1,20 +1,21 @@
 package org.luger.lc.service;
 
+import org.luger.lc.model.Alumno;
 import org.luger.lc.model.DocumentoAlumno;
 
 import java.util.List;
 
 public interface DocumentoAlumnoService {
 
-    DocumentoAlumno findById(Long id);
+    DocumentoAlumno findById(Integer id);
 
-    DocumentoAlumno findByAlumnoId(Long id);
+    DocumentoAlumno findByAlumnoId(Integer id);
 
-    void persist(DocumentoAlumno documentoAlumno);
+    void persist(Alumno alumno);
 
-    void update(DocumentoAlumno documentoAlumno);
+    void update(Alumno alumno);
 
-    void delete(DocumentoAlumno documentoAlumno);
+    void delete(Integer id);
 
     List<DocumentoAlumno> findAll();
 

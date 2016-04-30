@@ -29,13 +29,13 @@ public class DireccionCampoClinicoController {
     }
 
     @RequestMapping(value = "/direccion-campo-clinico/{id}",method = RequestMethod.GET)
-    public ResponseEntity<DireccionCampoClinico> findById(@PathVariable Long id) throws Exception{
+    public ResponseEntity<DireccionCampoClinico> findById(@PathVariable Integer id) throws Exception{
         return ResponseEntity.ok(direccionCampoClinicoService.findById(id));
     }
 
-    @RequestMapping(value = "/direccion-campo-clinico",method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@RequestBody DireccionCampoClinico direccionCampoClinico) throws Exception{
-        direccionCampoClinicoService.delete(direccionCampoClinico);
+    @RequestMapping(value = "/direccion-campo-clinico/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws Exception{
+        direccionCampoClinicoService.delete(id);
         return ResponseEntity.ok("Direccion eliminada");
     }
 

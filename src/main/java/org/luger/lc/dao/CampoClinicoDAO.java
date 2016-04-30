@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CampoClinicoDAO {
 
-    CampoClinico findById(Long id);
+    CampoClinico findById(Integer id);
 
     void persist(CampoClinico campoClinico);
 

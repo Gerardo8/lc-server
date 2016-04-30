@@ -15,7 +15,7 @@ public class TelefonoAlumnoDAOImpl implements TelefonoAlumnoDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public TelefonoAlumno findById(Long id) {
+    public TelefonoAlumno findById(Integer id) {
         return (TelefonoAlumno) sessionFactory.getCurrentSession().get(TelefonoAlumno.class, id);
     }
 

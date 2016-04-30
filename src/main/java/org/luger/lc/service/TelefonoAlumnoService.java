@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface TelefonoAlumnoService {
 
-    TelefonoAlumno findById(Long id);
+    TelefonoAlumno findById(Integer id);
 
     void persist(TelefonoAlumno telefonoAlumno);
 
     void update(TelefonoAlumno telefonoAlumno);
 
-    void delete(TelefonoAlumno telefonoAlumno);
+    void delete(Integer id);
 
     List<TelefonoAlumno> findAll();
 

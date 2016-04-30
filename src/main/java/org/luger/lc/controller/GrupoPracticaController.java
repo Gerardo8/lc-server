@@ -1,7 +1,6 @@
 package org.luger.lc.controller;
 
 import org.luger.lc.model.GrupoPractica;
-import org.luger.lc.model.HorarioGrupoPractica;
 import org.luger.lc.service.GrupoPracticaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +17,8 @@ public class GrupoPracticaController {
     private GrupoPracticaService grupoPracticaService;
 
     @RequestMapping(value = "/grupo-practica",method = RequestMethod.POST)
-    public ResponseEntity<String> persist(@RequestBody HorarioGrupoPractica horarioGrupoPractica) throws Exception{
-        grupoPracticaService.persist(horarioGrupoPractica.getGrupoPractica(),horarioGrupoPractica);
+    public ResponseEntity<String> persist(@RequestBody GrupoPractica grupoPractica) throws Exception{
+        grupoPracticaService.persist(grupoPractica);
         return ResponseEntity.ok("Grupo guardado");
     }
 
@@ -30,18 +29,18 @@ public class GrupoPracticaController {
     }
 
     @RequestMapping(value = "/grupo-practica/{id}",method = RequestMethod.GET)
-    public ResponseEntity<GrupoPractica> findById(@PathVariable Long id) throws Exception{
+    public ResponseEntity<GrupoPractica> findById(@PathVariable Integer id) throws Exception{
         return ResponseEntity.ok(grupoPracticaService.findById(id));
     }
 
     @RequestMapping(value = "/grupos-practica/academia/{academiaId}/campo/{campoClinicoId}",method = RequestMethod.GET)
-    public ResponseEntity<List<GrupoPractica>> findByAcademiaCampoId(@PathVariable Long academiaId,@PathVariable Long campoClinicoId) throws Exception{
+    public ResponseEntity<List<GrupoPractica>> findByAcademiaCampoId(@PathVariable Integer academiaId,@PathVariable Integer campoClinicoId) throws Exception{
         return ResponseEntity.ok(grupoPracticaService.findByAcademiaCampoId(academiaId,campoClinicoId));
     }
 
-    @RequestMapping(value = "/grupo-practica",method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@RequestBody GrupoPractica grupoPractica) throws Exception{
-        grupoPracticaService.delete(grupoPractica);
+    @RequestMapping(value = "/grupo-practica/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws Exception{
+        grupoPracticaService.delete(id);
         return ResponseEntity.ok("Grupo eliminado");
     }
 

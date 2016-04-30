@@ -29,13 +29,13 @@ public class TelefonoAlumnoController {
     }
 
     @RequestMapping(value = "/telefono/{id}",method = RequestMethod.GET)
-    public ResponseEntity<TelefonoAlumno> findById(@PathVariable Long id) throws Exception{
+    public ResponseEntity<TelefonoAlumno> findById(@PathVariable Integer id) throws Exception{
         return ResponseEntity.ok(telefonoAlumnoService.findById(id));
     }
 
-    @RequestMapping(value = "/telefono",method = RequestMethod.DELETE)
-    public ResponseEntity<String> delete(@RequestBody TelefonoAlumno telefono) throws Exception{
-        telefonoAlumnoService.delete(telefono);
+    @RequestMapping(value = "/telefono/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws Exception{
+        telefonoAlumnoService.delete(id);
         return ResponseEntity.ok("Telefono eliminado");
     }
 

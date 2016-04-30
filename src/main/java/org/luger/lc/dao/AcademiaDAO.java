@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AcademiaDAO {
 
-    Academia findById(Long id);
+    Academia findById(Integer id);
 
     void persist(Academia academia);
 

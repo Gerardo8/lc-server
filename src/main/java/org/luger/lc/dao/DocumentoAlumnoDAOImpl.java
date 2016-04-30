@@ -16,12 +16,12 @@ public class DocumentoAlumnoDAOImpl implements DocumentoAlumnoDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public DocumentoAlumno findById(Long id) {
+    public DocumentoAlumno findById(Integer id) {
         return (DocumentoAlumno) sessionFactory.getCurrentSession().get(DocumentoAlumno.class, id);
     }
 
     @Override
-    public DocumentoAlumno findByAlumnoId(Long id) {
+    public DocumentoAlumno findByAlumnoId(Integer id) {
         return (DocumentoAlumno) sessionFactory.getCurrentSession().createCriteria(DocumentoAlumno.class)
                     .add(Restrictions.eq("alumno.id", id)).uniqueResult();
     }

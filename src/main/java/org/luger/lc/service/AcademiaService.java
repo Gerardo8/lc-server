@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface AcademiaService {
 
-    Academia findById(Long id);
+    Academia findById(Integer id);
 
     void persist(Academia academia);
 
     void update(Academia academia);
 
-    void delete(Academia academia);
+    void delete(Integer id);
 
     List<Academia> findAll();
 

@@ -1,15 +1,15 @@
 package org.luger.lc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalTime;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,12 +18,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "laboratorios_computo",name = "grupo_teoria")
-public class GrupoTeoria implements Serializable {
+@Table(schema = "laboratorios_computo",name = "induccion")
+public class Induccion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,32 +30,30 @@ public class GrupoTeoria implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "nombre")
-    private String nombre;
-    @Basic(optional = false)
-    @Column(name = "fecha_inicio")
+    @Column(name = "fecha_induccion")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate fechaInicio;
+    private LocalDate fechaInduccion;
     @Basic(optional = false)
-    @Column(name = "fecha_fin")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate fechaFin;
+    @Column(name = "hora_inicio")
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonSerialize(using = LocalTimeSerializer.class)
+    private LocalTime horaInicio;
+    @Basic(optional = false)
+    @Column(name = "hora_fin")
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonSerialize(using = LocalTimeSerializer.class)
+    private LocalTime horaFin;
     @JoinColumn(name = "academia_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Academia academia;
-    @JsonIgnore
-    @OneToMany(mappedBy = "grupoTeoria")
-    private List<Alumno> alumnos;
 
-    public GrupoTeoria() {
+    public Induccion() {
     }
 
-    public GrupoTeoria(Integer id) {
+    public Induccion(Integer id) {
         this.id = id;
     }
-
 
     public Integer getId() {
         return id;
@@ -66,28 +63,28 @@ public class GrupoTeoria implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public LocalDate getFechaInduccion() {
+        return fechaInduccion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFechaInduccion(LocalDate fechaInduccion) {
+        this.fechaInduccion = fechaInduccion;
     }
 
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
+    public LocalTime getHoraInicio() {
+        return horaInicio;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setHoraInicio(LocalTime horaInicio) {
+        this.horaInicio = horaInicio;
     }
 
-    public LocalDate getFechaFin() {
-        return fechaFin;
+    public LocalTime getHoraFin() {
+        return horaFin;
     }
 
-    public void setFechaFin(LocalDate fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setHoraFin(LocalTime horaFin) {
+        this.horaFin = horaFin;
     }
 
     public Academia getAcademia() {
@@ -96,14 +93,6 @@ public class GrupoTeoria implements Serializable {
 
     public void setAcademia(Academia academia) {
         this.academia = academia;
-    }
-
-    public List<Alumno> getAlumnos() {
-        return alumnos;
-    }
-
-    public void setAlumnos(List<Alumno> alumnos) {
-        this.alumnos = alumnos;
     }
 
     @Override
@@ -116,10 +105,10 @@ public class GrupoTeoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GrupoTeoria)) {
+        if (!(object instanceof Induccion)) {
             return false;
         }
-        GrupoTeoria other = (GrupoTeoria) object;
+        Induccion other = (Induccion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -128,7 +117,7 @@ public class GrupoTeoria implements Serializable {
 
     @Override
     public String toString() {
-        return "org.luger.lc.model.GrupoTeoria[ id=" + id + " ]";
+        return "org.luger.lc.model.Induccion[ id=" + id + " ]";
     }
     
 }

@@ -16,7 +16,7 @@ public class VacunaServiceImpl implements VacunaService {
     private VacunaDAO vacunaDAO;
 
     @Override
-    public Vacuna findById(Long id) {
+    public Vacuna findById(Integer id) {
         return vacunaDAO.findById(id);
     }
 
@@ -31,7 +31,8 @@ public class VacunaServiceImpl implements VacunaService {
     }
 
     @Override
-    public void delete(Vacuna vacuna) {
+    public void delete(Integer id) {
+        Vacuna vacuna = vacunaDAO.findById(id);
         vacunaDAO.delete(vacuna);
     }
 

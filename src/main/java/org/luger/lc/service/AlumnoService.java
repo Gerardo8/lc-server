@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AlumnoService {
 
-    Alumno findById(Long id);
+    Alumno findById(Integer id);
 
     Alumno findByNumeroCuenta(String numeroCuenta);
 
@@ -15,7 +15,7 @@ public interface AlumnoService {
 
     void update(Alumno alumno);
 
-    void delete(Alumno alumno);
+    void delete(Integer id);
 
     List<Alumno> findAll();
 
